@@ -1,0 +1,273 @@
+body{
+    background:#eceaff
+}
+#genre-list{text-align:center;
+font-weight:bold;
+}
+.boot-icon{
+    height:50px;
+    width:50px;
+    margin:10px;
+}
+.navbar-brand{
+    font-weight:bold;
+}
+img{
+    height:90vh;
+}
+#carouselExampleIndicators{
+    width:50%;
+    margin-left:25%;
+    border-radius:10px;
+    margin-top:10px
+    
+}
+
+#cards-container{
+    display:grid;
+    grid-auto-flow: column;
+    overflow-x:scroll;
+    gap:10px
+
+}
+#cards-container > *{
+   overflow:hidden;
+   height:600px;
+   width:400px
+
+}
+.card-image{
+    max-width:100%;
+    max-height:500px;
+}
+
+/* style.css */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+    
+   /* body {
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    background: hsl(137, 46%, 24%);
+    font-family: "Poppins", sans-serif;
+    }*/
+    
+    .star-card {
+    max-width: 20rem;
+    background: #fff;
+    margin: 0 1rem;
+    padding: 1rem;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    border-radius: 0.5rem;
+    
+    }
+    
+    .star {
+    font-size: 5vh;
+    cursor: pointer;
+    }
+    
+    .one {
+    color: rgb(255, 0, 0);
+    }
+    
+    .two {
+    color: rgb(255, 106, 0);
+    }
+    
+    .three {
+    color: rgb(251, 255, 120);
+    }
+    
+    .four {
+    color: rgb(255, 255, 0);
+    }
+    
+    .five {
+    color: rgb(24, 159, 14);
+    }
+    .tv-cards{
+        display:grid;
+        grid-auto-flow: column;
+        overflow-x:scroll;
+        gap:10px
+    
+    }
+    .tv-cards > *{
+        overflow:hidden;
+         height:600px;
+        width:400px
+    
+    }
+    .card-image2{
+        max-width:100%;
+    max-height:500px;
+    }
+.movie-cards{
+    display:grid;
+        grid-auto-flow: column;
+        overflow-x:scroll;
+        gap:10px
+}
+.movie-cards > *{
+    overflow:hidden;
+    height:600px;
+   width:400px
+}    
+.card-image3{
+    max-width:100%;
+    max-height:500px;
+}
+li{
+    text-align:center;
+}
+.example::-webkit-scrollbar {
+    display: none;
+}
+.search_box{
+    height:300px;
+    width:210px;
+    overflow:auto;
+    background:rgb(184,184,184,0.3);
+    z-index:1;
+    position:absolute;
+    top:80%
+}
+.search_box a{
+    width:100%;
+    height:auto;
+    color:#fff;
+    display:flex;
+    gap:5px;
+    border:1px solid white;
+}
+.search_box a img{
+    height:45px;
+    width:40px;
+    border-radius:5px;
+    
+}
+.search_box a div h6{
+    font-size:18px;
+    color:black;
+    
+}
+.search_box a div{
+    order:1;
+}
+.search_box a:hover{
+    background-color: rgb(184,184,184,0.4);
+}
+#type_something{
+    position:relative;
+}
+.search_box::-webkit-scrollbar{
+    width:7px;
+    background:rgb(184,184,184,0.3);
+    border-radius:20px;
+}
+.search_box::-webkit-scrollbar-thumb{
+    background:rgb(184,184,184,0.9);
+    border-radius:20px
+}
+
+#person{
+    width:40px;
+    height:35px;
+}
+nav{
+    position:relative;
+}
+.sub-menu-wrap{
+    position:absolute;
+    top:120%;
+    left:81%;
+    width:250px;
+    
+    background:white;
+    border-radius:5px;
+    max-height:0px;
+    transition: 0.3s;
+    overflow:hidden
+
+}
+.sub-menu-wrap.open-menu{
+    max-height:800px;
+}
+.user-info img{
+    width:60px;
+    height:90px;
+    z-index:1
+}
+.sub-menu{
+    background:white;
+    padding:20px;
+    margin:10px;
+    
+    
+    
+}
+.user-info{
+    display:flex;
+    align-items:center;
+}
+.user-info img{
+    margin-right:15px;
+    border-radius:50%
+}
+.sub-menu hr{
+    width:100%;
+    height:1px;
+    color:#ccc;
+    margin:15px 0 10px;
+}
+.submenu p{
+    text-align:center;
+    
+}
+#log-icon{
+    width:25px;
+    height:25px;
+    margin-top:1px
+}
+.menu-contents{
+    display:flex;
+    align-items:center;
+    margin:12px 0
+}
+.menu-contents p{
+    width:100%;
+    margin-top:14px
+   
+}
+.menu-contents:hover p{
+    cursor:default;
+    font-weight:700
+}
+.menu-contents p{
+    margin-left:20px
+}
+#navigator{
+    color:#000000;
+    text-align:center;
+}
+.card-image{
+    border-radius:10px
+}
+.card-image2{
+    border-radius:10px;
+}
+.card-image3{
+    border-radius:10px;
+}
+.carousel-item img{
+    border-radius:10px
+}
