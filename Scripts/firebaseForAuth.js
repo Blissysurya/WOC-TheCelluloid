@@ -42,7 +42,7 @@ try{
   const userInfo=userCredential.user;
   const user_Id=userInfo.uid;
 
-  buttonSubmit.addEventListener("click",window.location.href=`../movie-list.html?Id=${encodeURIComponent(user_Id)}`)
+  buttonSubmit.addEventListener("click",window.location.href=`../movie-list.html?Id=${user_Id}`)
   
 
   await setDoc(doc(db,"users",user_Id),{
