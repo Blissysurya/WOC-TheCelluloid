@@ -42,7 +42,7 @@ try{
   const userInfo=userCredential.user;
   const user_Id=userInfo.uid;
 
-  buttonSubmit.addEventListener("click",window.location.href=`../movie-list.html?Id=${user_Id}`)
+  buttonSubmit.addEventListener("click",window.location.href=`C:\Users\dixit\Documents\GitHub\WOC-TheCelluloid\movie-list.html?Id=${user_Id}`)
   
 
   await setDoc(doc(db,"users",user_Id),{
