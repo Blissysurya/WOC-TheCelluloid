@@ -22,12 +22,12 @@ font-weight:bold;
 };
 @media  (max-width:768px){
     .carousel-item img{
-        height:30vh; 
+        height:300px
     }
 }
 @media (max-width:768px){
     #first-carousel img { 
-        height:30vh; 
+        height:300px
     }
 }
 @media  (min-width:768px){
