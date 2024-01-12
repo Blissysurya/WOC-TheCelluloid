@@ -19,8 +19,6 @@ function renderCards(data){
         const myTitle=document.createElement("h3");
 		
         
-
-       
         myImage.classList="card-image";
 		
         

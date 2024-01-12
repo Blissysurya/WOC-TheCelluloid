@@ -69,6 +69,12 @@ font-weight:bold;
     }
 }
 @media (max-width:768px){
+    .movie-cards > * img{
+        width:150px;
+        height:150px
+    }
+}
+@media (max-width:768px){
     .movie-cards > * {
         width:150px;
         height:150px
@@ -183,19 +189,9 @@ font-weight:bold;
     height:200px    
 }}
 
-@media (max-width:768px){
-    #upcoming-container > * img{
-        width:150px;
-        height:150px
-    }
-}
 
-@media (min-width:768px){
-    #upcoming-container > * img{
-        width:150px;
-        height:150px
-    }
-}
+
+
 
 .upcoming-card-image{
     max-width:100%;
