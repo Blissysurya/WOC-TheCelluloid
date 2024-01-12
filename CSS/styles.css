@@ -22,7 +22,7 @@ font-weight:bold;
 };
 @media  (max-width:768px){
     .carousel-item img{
-        height:300px
+        height:100px
     }
 }
 @media (max-width:768px){
