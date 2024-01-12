@@ -72,14 +72,14 @@ const myListDiv=document.getElementById("list");
        
        smallImage.src="https://image.tmdb.org/t/p/original/"+dataunit.poster_path;
        smallAnch.addEventListener("click",function(){
-         //   const myDiv2=document.createElement("div");
-		   // const myImage2=document.createElement("img");
-		    //const myTitle2=document.createElement("h3");
+          /*  const myDiv2=document.createElement("div");
+		   const myImage2=document.createElement("img");
+		    const myTitle2=document.createElement("h3");
 
-		  //  myImage2.classList="card-image2";
-            //myDiv2.classList="list-element";
-		    //myImage2.src="https://image.tmdb.org/t/p/original/"+dataunit.poster_path;
-		    //myTitle2.innerText=dataunit.original_name || dataunit.original_title;
+		    myImage2.classList="card-image2";
+            myDiv2.classList="list-element";
+		    myImage2.src="https://image.tmdb.org/t/p/original/"+dataunit.poster_path;
+		    myTitle2.innerText=dataunit.original_name || dataunit.original_title;*/
 
 
             //Firebase
@@ -100,7 +100,7 @@ const myListDiv=document.getElementById("list");
         })
 
 
-		   // myDiv2.appendChild(myImage2);
+		  //  myDiv2.appendChild(myImage2);
 		    //myDiv2.appendChild(myTitle2);
 
 		    //myListDiv.appendChild(myDiv2);

@@ -11,69 +11,27 @@ const myCards=document.querySelector("#cards-container");
 ;
 
 
-//Star wala function
-let stars = 
-	document.getElementsByClassName("star-card");
-let output = 
-	document.getElementById("output");
 
-
-function gfg(n) {
-	remove();
-	for (let i = 0; i < n; i++) {
-		if (n == 1) cls = "one";
-		else if (n == 2) cls = "two";
-		else if (n == 3) cls = "three";
-		else if (n == 4) cls = "four";
-		else if (n == 5) cls = "five";
-		stars[i].className = "star " + cls;
-	}
-	output.innerText = "Rating is: " + n + "/5";
-}
-
-
-function remove() {
-	let i = 0;
-	while (i < 5) {
-		stars[i].className = "star";
-		i++;
-	}
-}
 function renderCards(data){
     data.forEach(dataunit=>{
         const myDiv=document.createElement("div");
         const myImage=document.createElement("img");
         const myTitle=document.createElement("h3");
-		/*const ratingStars=document.createElement("div");*/
+		
         
 
-        myDiv.classList="card";
+       
         myImage.classList="card-image";
-		/*ratingStars.classList="star-card";*/
+		
         
 
         myImage.src="https://image.tmdb.org/t/p/original/"+dataunit.poster_path;
         myTitle.innerText=dataunit.original_title || dataunit.original_name;
-		/*ratingStars.innerHTML=
-			<div>
-				<span onclick="gfg(1)"
-					class="star">★
-				</span><span onclick="gfg(2)"
-					class="star">★
-				</span><span onclick="gfg(3)"
-					class="star">★
-				</span><span onclick="gfg(4)"
-					class="star">★
-				</span><span onclick="gfg(5)"
-					class="star">★
-				</span><h4 id="output">
-					Rating is: 0/5
-				</h4>
-			</div>*/
+		
         
         myDiv.appendChild(myImage);
         myDiv.appendChild(myTitle);
-		/*myDiv.appendChild(ratingStars);*/
+		
         
         myCards.appendChild(myDiv);
 		
@@ -113,15 +71,16 @@ function renderTopRatedMovies(data){
 		const myDiv3=document.createElement("div");
 		const myImage3=document.createElement("img");
 		const myTitle3=document.createElement("h3");
-
+		
 		myImage3.classList="card-image3";
 
 		myImage3.src="https://image.tmdb.org/t/p/original/"+dataunit.poster_path;
 		myTitle3.innerText=dataunit.original_title || dataunit.original_name;
+		
 
 		myDiv3.appendChild(myImage3);
 		myDiv3.appendChild(myTitle3);
-
+		
 		myTopMovies.appendChild(myDiv3);
 
 	})
@@ -226,7 +185,35 @@ document.getElementById("person").addEventListener("click",
 toggleMenu
 )
 
+let fourthrow=fetch("https://api.themoviedb.org/3/movie/upcoming?api_key=5013eb84105d14670f2ab2198877f9a3")
+.then(response=>{
+	return response.json();
+})
+.then(responseData=>{
+	upcomingMovies(responseData.results)
+})
+.catch(error=>{
+	console.log(error)
+})
+const upcomingDiv=document.getElementById("upcoming-container");
+function upcomingMovies(data){
+	data.forEach(dataunit=>{
+		const myDiv4=document.createElement("div");
+		const myTitle=document.createElement("h3");
+		const myImg=document.createElement("img");
 
+		myImg.src="https://image.tmdb.org/t/p/original/"+dataunit.poster_path;
+		myTitle.innerText=dataunit.original_title || dataunit.original_name;
+		myImg.classList.add("upcoming-card-image");
+		myTitle.classList.add("upcoming-title");
+		
+		myDiv4.append(myImg);
+		myDiv4.append(myTitle);
+
+		upcomingDiv.append(myDiv4);
+
+	})
+}
 
 
 

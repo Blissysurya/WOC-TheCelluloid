@@ -12,16 +12,75 @@ font-weight:bold;
 .navbar-brand{
     font-weight:bold;
 }
-img{
-    height:90vh;
-}
+
 #carouselExampleIndicators{
     width:50%;
     margin-left:25%;
     border-radius:10px;
     margin-top:10px
     
+};
+@media  (max-width:768px){
+    .carousel-item img{
+        height:30vh; 
+    }
 }
+@media (max-width:768px){
+    #first-carousel img { 
+        height:30vh; 
+    }
+}
+@media  (min-width:768px){
+    .carousel-item img{
+        height:90vh; 
+    }
+   
+    
+} 
+@media (max-width:768px){
+    #cards-container > * img{
+        width:150px;
+        height:150px
+    }
+     
+}
+@media (max-width:768px){
+    #cards-container > * {
+        width:150px;
+        height:150px
+    }
+}
+@media (max-width:768px){
+    .tv-cards > * img{
+        width:150px;
+        height:150px
+    }
+}
+@media (max-width:768px){
+    .tv-cards > * {
+        width:150px;
+        height:150px
+    }
+}
+@media (max-width:768px){
+    .movie-cards > * img{
+        width:150px;
+        height:150px
+    }
+}
+@media (max-width:768px){
+    .movie-cards > * {
+        width:150px;
+        height:150px
+    }
+}
+@media (max-width:768px){
+    .card{
+        width:150px;
+        height:150px
+    }
+}
+
 
 #cards-container{
     display:grid;
@@ -30,12 +89,12 @@ img{
     gap:10px
 
 }
-#cards-container > *{
+@media (min-width:768px){#cards-container > *{
    overflow:hidden;
    height:600px;
    width:400px
+}}
 
-}
 .card-image{
     max-width:100%;
     max-height:500px;
@@ -43,11 +102,7 @@ img{
 
 /* style.css */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    }
+
     
    /* body {
     min-height: 50vh;
@@ -101,27 +156,70 @@ img{
         gap:10px
     
     }
-    .tv-cards > *{
+@media(min-width:768px){.tv-cards > *{
+    overflow:hidden;
+     height:600px;
+    width:400px;
+}
+}
+
+ #upcoming-container{
+        display:grid;
+        grid-auto-flow: column;
+        overflow-x:scroll;
+        gap:10px;
+}
+
+
+
+@media (min-width:768px){ #upcoming-container > *{
         overflow:hidden;
-         height:600px;
-        width:400px
-    
+        height:600px;
+        width:400px;      
+}}
+@media (max-width:768px){ #upcoming-container > *{
+    overflow:hidden;
+    width:150px;
+    height:200px    
+}}
+
+@media (max-width:768px){
+    #upcoming-container > * img{
+        width:150px;
+        height:150px
     }
-    .card-image2{
-        max-width:100%;
+}
+
+@media (min-width:768px){
+    #upcoming-container > * img{
+        width:150px;
+        height:150px
+    }
+}
+
+.upcoming-card-image{
+    max-width:100%;
+    max-height:500px;  
+}
+
+
+ .card-image2{
+    max-width:100%;
     max-height:500px;
     }
 .movie-cards{
     display:grid;
         grid-auto-flow: column;
         overflow-x:scroll;
-        gap:10px
+        gap:10px;
 }
-.movie-cards > *{
+@media (min-width:768px){
+    .movie-cards > *{
     overflow:hidden;
     height:600px;
-   width:400px
-}    
+   width:400px;
+}
+}   
 .card-image3{
     max-width:100%;
     max-height:500px;
@@ -271,3 +369,7 @@ nav{
 .carousel-item img{
     border-radius:10px
 }
+.upcoming-card-image{
+    border-radius:10px
+}
+
