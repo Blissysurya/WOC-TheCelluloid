@@ -42,6 +42,7 @@ function remove() {
  const myBoxDiv=document.querySelector(".search_box2");
 const myListDiv=document.getElementById("list2");
  function searchAnswer(data){
+    document.querySelector(".parent-rating").style.visibility="visible";
    /*myReqDiv.innerHTML="";*/
    myBoxDiv.innerHTML="";
    data.forEach(dataunit=>{
@@ -52,10 +53,6 @@ const myListDiv=document.getElementById("list2");
        smallDiv.innerHTML=`
        <h6>${dataunit.original_title}</h6>
        `;
-       
-       
-       
-       
        smallImage.classList.add("small-image");
        smallAnch.classList.add("clickable");
        
@@ -70,56 +67,28 @@ const myListDiv=document.getElementById("list2");
             myDiv2.classList="list-element";
 		    myImage2.src="https://image.tmdb.org/t/p/original/"+dataunit.poster_path;
 		    myTitle2.innerText=dataunit.original_name || dataunit.original_title;
-
-            ratingStars.classList="star-card";
-            
-	
-			ratingStars.innerHTML=`
-            <div class="rating">
-			<div class="card">
-				<span onclick="${classListToggle("starone")}"
-					class="star">★
-				</span><span onclick="${classListToggle("startwo")}"
-					class="star">★
-				</span><span onclick="${classListToggle("starthree")}"
-					class="star">★
-				</span><span onclick="${classListToggle("starfour")}"
-					class="star">★
-				</span><span onclick="${classListToggle("starfive")}"
-					class="star">★
-				</span>
-			</div>
-            </div>`
-           
-            function classListToggle(classname){
-                this.classList.toggle(classname)
-            }
-
-
-            //Firebase
-
-          
-            
-        //})
-
-
+    
 		   myDiv2.appendChild(myImage2);
 		    myDiv2.appendChild(myTitle2);
             myDiv2.appendChild(ratingStars);
 		    myListDiv.appendChild(myDiv2);
        })
-       
-      
-     
-       
-       
-       
-       
+        
        smallAnch.appendChild(smallDiv);
        smallAnch.appendChild(smallImage);
-
        myBoxDiv.appendChild(smallAnch);
+
+
+
+
         })}
+
+        
+        
+
+
+
+
 
  function hideSearch(){
            if (document.querySelector("#colFormLabel").value == 0) {
