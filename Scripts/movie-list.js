@@ -1,7 +1,7 @@
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
-  import {getFirestore,collection, getDocs,onSnapshot, addDoc, doc, setDoc} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+  import {getFirestore,collection, getDocs,onSnapshot, addDoc, doc, setDoc, query} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
   
   
   // TODO: Add SDKs for Firebase products that you want to use
@@ -86,7 +86,7 @@ const myListDiv=document.getElementById("list");
             let movieId=dataunit.id;
             
             myList=[]
-            addDoc(collection(db,URL()),{
+            /*addDoc(collection(db,URL()),{
                 name : dataunit.original_title ||  dataunit.original_name
             })
             .then(snap=>{
@@ -94,9 +94,32 @@ const myListDiv=document.getElementById("list");
             })
             .catch(error=>{
                 console.log(error);
-            })
+            })*/
+
+            const addPostToUser = async (userId) => {
+                try {
+                  // Reference to the 'users' collection
+                  const usersCollection = collection(db, 'users');
+              
+                  // Reference to the specific user's document
+                  const userDocRef = doc(usersCollection,userId)
+
+              
+                  // Reference to the nested 'posts' collection
+                  const postsCollection = collection(userDocRef, 'ToWatchList');
+              
+                  // Add a document to the 'posts' collection
+                  const newPostDocRef = await addDoc(postsCollection, {
+                    name : dataunit.original_title ||  dataunit.original_name
+                  });
+              
+                  console.log('Post added with ID: ', newPostDocRef.id);
+                } catch (error) {
+                  console.error('Error adding post: ', error);
+                }
+              };
             
-            
+            addPostToUser(URL());
         })
 
 
@@ -198,7 +221,7 @@ const MovieList =async()=>{
     try{
         
         //const docSnaps=await getDocs(collection(db,"ToWatchList"));
-        await onSnapshot(collection(db,URL()),docSnaps=>{
+        await onSnapshot(query(collection(doc(collection(db,'users'),URL()),'ToWatchList')),docSnaps=>{
             
             docSnaps.forEach(doc=>{
                 const docSnap= doc.data();

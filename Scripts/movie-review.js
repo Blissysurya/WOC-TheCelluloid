@@ -1,3 +1,34 @@
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
+import {getFirestore,collection, getDocs,onSnapshot, addDoc, doc, setDoc, query} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+const url=new URLSearchParams(window.location.search);
+const id=url.get("id");
+
+
+// Now you can use the 'uid' variable in this file
+
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyCM_YnOmfpUeMuxqhEROOVHmL57VKxl1HQ",
+  authDomain: "mockproject-e167e.firebaseapp.com",
+  projectId: "mockproject-e167e",
+  storageBucket: "mockproject-e167e.appspot.com",
+  messagingSenderId: "1048857444347",
+  appId: "1:1048857444347:web:804627484e45401dc3955e",
+  measurementId: "G-2G1Y735GPS"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const db=getFirestore();
+
 const searchBar=document.getElementById("colFormLabel");
 searchBar.addEventListener("keyup", function search_results(){
     const searchValue=searchBar.value;
@@ -12,37 +43,11 @@ searchBar.addEventListener("keyup", function search_results(){
         console.log(error);
     })
 })
-/*let stars = 
-	document.getElementsByClassName("star");
-let output = 
-	document.getElementById("output");
-*/
 
-/*function gfg(n) {
-	remove();
-	for (let i = 0; i < n; i++) {
-		if (n == 1) cls = "one";
-		else if (n == 2) cls = "two";
-		else if (n == 3) cls = "three";
-		else if (n == 4) cls = "four";
-		else if (n == 5) cls = "five";
-		stars[i].className = "star " + cls;
-	}
-	output.innerText = "Rating is: " + n + "/5";
-}
-
-
-function remove() {
-	let i = 0;
-	while (i < 5) {
-		stars[i].className = "star";
-		i++;
-	}
-}*/
  const myBoxDiv=document.querySelector(".search_box2");
 const myListDiv=document.getElementById("list2");
  function searchAnswer(data){
-    document.querySelector(".parent-rating").style.visibility="visible";
+    
    /*myReqDiv.innerHTML="";*/
    myBoxDiv.innerHTML="";
    data.forEach(dataunit=>{
@@ -58,20 +63,58 @@ const myListDiv=document.getElementById("list2");
        
        smallImage.src="https://image.tmdb.org/t/p/original/"+dataunit.poster_path;
        smallAnch.addEventListener("click",function(){
-           const myDiv2=document.createElement("div");
+         /*  const myDiv2=document.createElement("div");
 		   const myImage2=document.createElement("img");
 		    const myTitle2=document.createElement("h3");
-            const ratingStars=document.createElement("div");
+            
 
 		    myImage2.classList="card-image2";
             myDiv2.classList="list-element";
 		    myImage2.src="https://image.tmdb.org/t/p/original/"+dataunit.poster_path;
 		    myTitle2.innerText=dataunit.original_name || dataunit.original_title;
-    
+
+            myDiv2.addEventListener("click",myModal.show())
+
 		   myDiv2.appendChild(myImage2);
 		    myDiv2.appendChild(myTitle2);
-            myDiv2.appendChild(ratingStars);
-		    myListDiv.appendChild(myDiv2);
+            
+		    myListDiv.appendChild(myDiv2);*/
+
+            myModal.show();
+            const myStars=document.querySelectorAll(".star");
+    myStars.forEach(star=>{
+    star.addEventListener("click",()=>{  
+    const addPostToUser = async () => {
+      try {
+        // Reference to the 'users' collection
+        const usersCollection = collection(db, 'users');
+    
+        // Reference to the specific user's document
+        const userDocRef = doc(usersCollection,id)
+
+    
+        // Reference to the nested 'posts' collection
+        const postsCollection = collection(userDocRef, 'Rated');
+    
+        // Add a document to the 'posts' collection
+        const newPostDocRef = await addDoc(postsCollection, {
+          name : dataunit.original_title ||  dataunit.original_name,
+          rating: star.dataset.value
+
+        });
+    
+        console.log('Post added with ID: ', newPostDocRef.id);
+      } catch (error) {
+        console.error('Error adding post: ', error);
+      }
+      
+     } })
+  
+  
+  })   
+
+
+
        })
         
        smallAnch.appendChild(smallDiv);
@@ -83,7 +126,8 @@ const myListDiv=document.getElementById("list2");
 
         })}
 
-        
+
+
         
 
 
@@ -105,3 +149,41 @@ document.querySelector("#colFormLabel").addEventListener("keyup",function(){
         document.querySelector(".search_box2").style.visibility="hidden"
     }
 })
+const ratingContainer = document.getElementById('rating');
+const stars = ratingContainer.getElementsByClassName('star');
+
+for (let i = 0; i < stars.length; i++) {
+  stars[i].addEventListener('mouseover', function () {
+    highlightStars(i);
+  });
+
+  stars[i].addEventListener('mouseout', function () {
+    resetStars();
+  });
+
+  stars[i].addEventListener('click', function () {
+    setRating(i + 1);
+  });
+}
+
+function highlightStars(index) {
+  for (let i = 0; i <= index; i++) {
+    stars[i].classList.add('active');
+  }
+}
+function resetStars() {
+    for (let i = 0; i < stars.length; i++) {
+      stars[i].classList.remove('active');
+    }
+  }
+  
+  function setRating(rating) {
+    resetStars();
+    for (let i = 0; i < rating; i++) {
+      stars[i].classList.add('active');
+    }
+    // You can use 'rating' value as needed, like sending it to the server for storage.
+}
+const myModal = new bootstrap.Modal(document.getElementById('exampleModal'),{  keyboard: false});
+
+

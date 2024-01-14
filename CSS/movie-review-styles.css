@@ -82,7 +82,7 @@
 }
 #watch-heading2{
     text-align:center;
-    
+    margin-top:210px
 }
 #list2{
     width:50%;
@@ -104,56 +104,22 @@
     font-size:20px;
     font-weight:600
 }
-
-/* style.css */
-
-
-    
-    .parent-rating {
-    min-height: 50vh;
-    display:flex;
-    align-items:center;
-    text-align: center;
-    justify-content:center;
-    background: hsl(137, 46%, 24%);
-    font-family: "Poppins", sans-serif;
-    margin-top:210px;
-    }
-    
-    .card {
-    max-width: 60rem;
-    background: #fff;
-    margin: 0 1rem;
-    padding: 1rem;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    width: 100%;
-    border-radius: 0.5rem;
-    }
-    
-    .star {
-    font-size: 10vh;
+.rating {
+    display: inline-block;
+  }
+  
+  .star {
+    font-size: 30px;
+    color: #ddd;
     cursor: pointer;
-    }
-    
-    .one {
-    color: rgb(255, 0, 0);
-    }
-    
-    .two {
-    color: rgb(255, 106, 0);
-    }
-    
-    .three {
-    color: rgb(251, 255, 120);
-    }
-    
-    .four {
-    color: rgb(255, 255, 0);
-    }
-    
-    .five {
-    color: rgb(24, 159, 14);
-    }
-.parent-rating{
-    visibility:hidden;
-}
+  }
+  
+  .star:hover {
+    color:yellow;
+  }
+  .active{
+    color:yellow;
+  }
+
+
+

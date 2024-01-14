@@ -162,7 +162,6 @@ function hideSearch(){
 	if(document.querySelector("#type_something").value==0){
 		document.querySelector(".search_box").style.visibility="hidden";
 	}
-	
 }
 hideSearch();
 document.querySelector("#search_here").addEventListener("click",function(){
@@ -212,7 +211,6 @@ function upcomingMovies(data){
 
 	})
 }
-
 
 
 

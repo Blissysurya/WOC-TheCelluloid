@@ -30,7 +30,6 @@ const signUpForm=document.getElementById("signUpForm");
 const buttonSubmit=document.querySelector(".go-on");
 
 
-
 export async function userCreater(){
 
 try{
@@ -45,11 +44,13 @@ try{
   buttonSubmit.addEventListener("click",window.location.href=`movie-list.html?Id=${user_Id}`)
   
 
+
   await setDoc(doc(db,"users",user_Id),{
     userId:user_Id,
     email:email,
     password:password
   })
+
   
 }
 catch(error){
