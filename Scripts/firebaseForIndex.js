@@ -106,7 +106,7 @@ const reactionPage=document.getElementsByClassName("reaction-here")
    return  currentUserUid;
  };
  
-
+unsubscribe();
 
 
 //const docRef= collection(db,"ToWatchList");

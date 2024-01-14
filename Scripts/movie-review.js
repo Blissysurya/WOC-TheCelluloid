@@ -84,31 +84,32 @@ const myListDiv=document.getElementById("list2");
             const myStars=document.querySelectorAll(".star");
     myStars.forEach(star=>{
     star.addEventListener("click",()=>{  
-    const addPostToUser = async () => {
+    const addPostToUser = async (ID) => {
       try {
         // Reference to the 'users' collection
         const usersCollection = collection(db, 'users');
-    
-        // Reference to the specific user's document
-        const userDocRef = doc(usersCollection,id)
 
-    
+        // Reference to the specific user's document
+        const userDocRef = doc(usersCollection, id);
+
+
         // Reference to the nested 'posts' collection
         const postsCollection = collection(userDocRef, 'Rated');
-    
+
         // Add a document to the 'posts' collection
         const newPostDocRef = await addDoc(postsCollection, {
-          name : dataunit.original_title ||  dataunit.original_name,
+          name: dataunit.original_title || dataunit.original_name,
           rating: star.dataset.value
-
         });
-    
+
         console.log('Post added with ID: ', newPostDocRef.id);
       } catch (error) {
         console.error('Error adding post: ', error);
       }
-      
-     } })
+
+    }
+    addPostToUser(id);
+  })
   
   
   })   

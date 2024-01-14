@@ -100,7 +100,7 @@ const myListDiv=document.getElementById("list");
                 try {
                   // Reference to the 'users' collection
                   const usersCollection = collection(db, 'users');
-              
+                
                   // Reference to the specific user's document
                   const userDocRef = doc(usersCollection,userId)
 
