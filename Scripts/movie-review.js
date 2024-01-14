@@ -2,9 +2,8 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
 import {getFirestore,collection, getDocs,onSnapshot, addDoc, doc, setDoc, query} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-const url=new URLSearchParams(window.location.search);
-const id=url.get("id");
 
 
 // Now you can use the 'uid' variable in this file
@@ -28,6 +27,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const db=getFirestore();
+const auth=getAuth();
+
 
 const searchBar=document.getElementById("colFormLabel");
 searchBar.addEventListener("keyup", function search_results(){
@@ -81,16 +82,21 @@ const myListDiv=document.getElementById("list2");
 		    myListDiv.appendChild(myDiv2);*/
 
             myModal.show();
-            const myStars=document.querySelectorAll(".star");
-    myStars.forEach(star=>{
-    star.addEventListener("click",()=>{  
-    const addPostToUser = async (ID) => {
+
+      const myStars=document.querySelectorAll(".star");
+      movieRatedList=[];
+      myStars.forEach(star=>{
+      star.addEventListener("click",()=>{  
+        onAuthStateChanged(auth,(user)=>{
+          console.log(user.uid)
+        
+      const addPostToUser = async (Id) => {
       try {
         // Reference to the 'users' collection
         const usersCollection = collection(db, 'users');
 
         // Reference to the specific user's document
-        const userDocRef = doc(usersCollection, id);
+        const userDocRef = doc(usersCollection,user.uid );
 
 
         // Reference to the nested 'posts' collection
@@ -106,11 +112,10 @@ const myListDiv=document.getElementById("list2");
       } catch (error) {
         console.error('Error adding post: ', error);
       }
-
     }
-    addPostToUser(id);
+    addPostToUser(user.uid);
   })
-  
+})
   
   })   
 
@@ -186,5 +191,44 @@ function resetStars() {
     // You can use 'rating' value as needed, like sending it to the server for storage.
 }
 const myModal = new bootstrap.Modal(document.getElementById('exampleModal'),{  keyboard: false});
+let movieRatedList=[];
 
+onAuthStateChanged(auth,(user)=>{
+  const MovieList =async()=>{
+    try{
+        //const docSnaps=await getDocs(collection(db,"ToWatchList"));
+        await onSnapshot(query(collection(doc(collection(db,'users'),user.uid),'Rated')),docSnaps=>{
+            
+            docSnaps.forEach(doc=>{
+                const docSnap= doc.data();
+                            
+                 movieRatedList.push(docSnap)
+            })
+            console.log(movieRatedList);
+            showMovies(movieRatedList); 
+        })
+        
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+MovieList();
+const showMovies= function(movieList){
+    
+    const listBox=document.getElementById("movie-rated-items");
+    listBox.innerHTML="";
+    movieList.forEach(movie=>{
+        const listItem=document.createElement("li");
+
+        listItem.innerHTML=`<h6>${movie.name}</h6>
+        <br/>
+        <h6>${movie.rating}</h6>`
+        listBox.append(listItem);
+    }
+
+    )
+} 
+
+})
 

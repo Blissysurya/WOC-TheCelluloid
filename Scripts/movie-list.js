@@ -2,7 +2,7 @@
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
   import {getFirestore,collection, getDocs,onSnapshot, addDoc, doc, setDoc, query} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-  
+  import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
   
   // TODO: Add SDKs for Firebase products that you want to use
   // https://firebase.google.com/docs/web/setup#available-libraries
@@ -22,8 +22,8 @@
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
-
-const db=getFirestore();
+  const auth=getAuth();
+  const db=getFirestore();
 
 function URL(){
     const urlquery=new URLSearchParams(window.location.search);
@@ -83,7 +83,7 @@ const myListDiv=document.getElementById("list");
 
 
             //Firebase
-            let movieId=dataunit.id;
+            
             
             myList=[]
             /*addDoc(collection(db,URL()),{
@@ -95,20 +95,21 @@ const myListDiv=document.getElementById("list");
             .catch(error=>{
                 console.log(error);
             })*/
-
+            onAuthStateChanged(auth,(user)=>{
+                console.log("User State: "+user.uid)
             const addPostToUser = async (userId) => {
                 try {
-                  // Reference to the 'users' collection
+                  
                   const usersCollection = collection(db, 'users');
                 
-                  // Reference to the specific user's document
-                  const userDocRef = doc(usersCollection,userId)
+                 
+                  const userDocRef = doc(usersCollection,user.uid)
 
               
-                  // Reference to the nested 'posts' collection
+                  
                   const postsCollection = collection(userDocRef, 'ToWatchList');
               
-                  // Add a document to the 'posts' collection
+                  
                   const newPostDocRef = await addDoc(postsCollection, {
                     name : dataunit.original_title ||  dataunit.original_name
                   });
@@ -119,8 +120,8 @@ const myListDiv=document.getElementById("list");
                 }
               };
             
-            addPostToUser(URL());
-        })
+            addPostToUser(user.uid);
+        })})
 
 
 		  //  myDiv2.appendChild(myImage2);
@@ -217,36 +218,41 @@ function showList(items){
     }
     )
 }*/
-const MovieList =async()=>{
-    try{
-        
-        //const docSnaps=await getDocs(collection(db,"ToWatchList"));
-        await onSnapshot(query(collection(doc(collection(db,'users'),URL()),'ToWatchList')),docSnaps=>{
-            
-            docSnaps.forEach(doc=>{
-                const docSnap= doc.data();
-                            
-                 myList.push(docSnap)
-            })
-            console.log(myList);
-            showMovies(myList); 
-        })
-        
-    }
-    catch(error){
-        console.log(error)
-    }
-}
-MovieList();
-const showMovies= function(movieList){
-    
-    const listBox=document.getElementById("list");
-    listBox.innerHTML="";
-    movieList.forEach(movie=>{
-        const listItem=document.createElement("li");
-        listItem.innerHTML=`<h6>${movie.name}</h6>`
-        listBox.append(listItem);
-    }
 
-    )
-}
+onAuthStateChanged(auth,(user)=>{
+    const MovieList =async()=>{
+      try{
+          //const docSnaps=await getDocs(collection(db,"ToWatchList"));
+          await onSnapshot(query(collection(doc(collection(db,'users'),user.uid),'ToWatchList')),docSnaps=>{
+              
+              docSnaps.forEach(doc=>{
+                  const docSnap= doc.data();
+                              
+                   myList.push(docSnap)
+              })
+              console.log(myList);
+              showMovies(myList); 
+          })
+          
+      }
+      catch(error){
+          console.log(error)
+      }
+  }
+  MovieList();
+  const showMovies= function(movieList){
+      
+      const listBox=document.getElementById("list");
+      listBox.innerHTML="";
+      movieList.forEach(movie=>{
+          const listItem=document.createElement("li");
+  
+          listItem.innerHTML=`<h6>${movie.name}</h6>`
+         
+          listBox.append(listItem);
+      }
+  
+      )
+  } 
+  
+  })

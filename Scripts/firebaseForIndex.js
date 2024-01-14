@@ -74,39 +74,29 @@ signOutElement.addEventListener("click",()=>{
     console.log("User State: ",user);
     
     if(user!==null){
-   // window.location.replace(`../index.html?id=${user.uid}`);
+   
     const name=document.getElementById("username");
     name.innerText=user.email.split("@",2)[0];
     }
     
  })
 
-//const reactionPage=document.getElementsByClassName("reaction-here")
-const reactionPage=document.getElementsByClassName("reaction-here")
- let currentUserUid = null;
 
- // Listen for authentication state changes
- const  unsubscribe =  onAuthStateChanged(auth, (user) => {
-   if (user) {
-     // User is signed in
-     currentUserUid = user.uid;
-      reactionPage.addEventListener("click",window.location.href=`../movie-review.html?id=${currentUserUid}`)
-     
-   } else {
-     // User is signed out
-     currentUserUid = null;
-   }
- });
+
+/* const user = firebase.auth().currentUser;
+ if (user !== null) {
+ 
+ 
+   const uid = user.uid;
+   reactionPage.addEventListener("click",window.location.href=`../movie-review.html?id=${uid}`)
+ }*/
 
 
  
 
  // Function to get the current user's UID
- const getCurrentUserUid = () => {
-   return  currentUserUid;
- };
- 
-unsubscribe();
+
+
 
 
 //const docRef= collection(db,"ToWatchList");
