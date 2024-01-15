@@ -38,27 +38,18 @@ try{
   
   const userCredential=await createUserWithEmailAndPassword(auth,email,password);
  
-  const userInfo=userCredential.user;
-  const user_Id=userInfo.uid;
+
+  }
 
   
 
-
-  await setDoc(doc(db,"users",user_Id),{
-    userId:user_Id,
-    email:email,
-    password:password
-  })
-
-  
-}
 catch(error){
   console.log(error)
 }}
 if(signUpForm!==null){
 signUpForm.addEventListener("submit",(e)=>{
   e.preventDefault();
- 
+ signUpForm.reset();
 })
 
 signUpForm.addEventListener("submit",userCreater)

@@ -22,6 +22,7 @@
     border:2px solid black;
     border-radius:10px;
     grid-area:auth;
+    max-height:72vh
     
 }
 #modal-content{
@@ -58,8 +59,28 @@ button{
     
 }
 
+@media (min-height:638px){
+
 .cherry{
-   height:78vh;
+   max-height:72vh;
    border: 2px solid black;
-   border-radius:5px
+   border-radius:5px;
+   width:auto
+}}
+.email{
+  margin-bottom:5px;
+  
+}
+@media (max-width:768px){
+    .imagediv{
+        display:none
+    }
+}
+@media (max-height:638px){
+    .cherry{
+        border: 2px solid black;
+        border-radius:5px;
+        height:auto;
+        max-height:72vh
+    }
 }

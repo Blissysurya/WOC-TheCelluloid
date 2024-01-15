@@ -1,6 +1,6 @@
-body{
-    background:#eceaff
-}
+/*body{
+    background-image:url()
+}*/
 #genre-list{text-align:center;
 font-weight:bold;
 }
@@ -278,10 +278,14 @@ li{
     background:rgb(184,184,184,0.9);
     border-radius:20px
 }
-
+#username{
+    font-weight:500
+}
 #person{
     width:40px;
     height:35px;
+    
+    margin-bottom:14px
 }
 nav{
     position:relative;
@@ -289,8 +293,9 @@ nav{
 .sub-menu-wrap{
     position:absolute;
     top:120%;
-    left:81%;
+    left:75%;
     width:250px;
+    max-width:350px;
     
     background:white;
     border-radius:5px;
@@ -299,13 +304,16 @@ nav{
     overflow:hidden
 
 }
+#navigator{
+    text-decoration:none;
+}
 .sub-menu-wrap.open-menu{
     max-height:800px;
 }
 .user-info img{
     width:60px;
     height:90px;
-    z-index:1
+    z-index:0
 }
 .sub-menu{
     background:white;
@@ -336,7 +344,8 @@ nav{
 #log-icon{
     width:25px;
     height:25px;
-    margin-top:1px
+    margin-top:1px;
+    
 }
 .menu-contents{
     display:flex;
@@ -348,16 +357,42 @@ nav{
     margin-top:14px
    
 }
+.menu-contents img{
+    margin-left:2px
+}
+.menu-contents span{
+    margin-left:5px
+}
 .menu-contents:hover p{
     cursor:default;
-    font-weight:700
+    font-weight:500
 }
 .menu-contents p{
     margin-left:20px
 }
+#utilities:hover a{
+    cursor:default;
+    font-weight:500
+}
+#utilities{
+    
+    display:flex
+}
+#utilities a{
+    width:100%;
+    margin-top:1px;
+    
+   
+}
+#spana{
+    margin-left:10px;
+
+}
+
 #navigator{
     color:#000000;
     text-align:center;
+    margin: 0 5px
 }
 .card-image{
     border-radius:10px
