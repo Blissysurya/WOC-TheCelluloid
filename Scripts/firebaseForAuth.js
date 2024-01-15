@@ -3,15 +3,15 @@ import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase
 import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import {  getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
- const firebaseConfig = {
-   apiKey: "AIzaSyCM_YnOmfpUeMuxqhEROOVHmL57VKxl1HQ",
-   authDomain: "mockproject-e167e.firebaseapp.com",
-   projectId: "mockproject-e167e",
-   storageBucket: "mockproject-e167e.appspot.com",
-   messagingSenderId: "1048857444347",
-   appId: "1:1048857444347:web:804627484e45401dc3955e",
-   measurementId: "G-2G1Y735GPS"
- };
+const firebaseConfig = {
+  apiKey: "AIzaSyA2k5Q1J2YZbwmBS23W-fxm22So6liJWuU",
+  authDomain: "woc-celluloid.firebaseapp.com",
+  projectId: "woc-celluloid",
+  storageBucket: "woc-celluloid.appspot.com",
+  messagingSenderId: "136134324008",
+  appId: "1:136134324008:web:9a07641e21d3fd2873aa1d",
+  measurementId: "G-Q89JHE8GRE"
+};
 
  
  
@@ -24,37 +24,39 @@ const auth = getAuth();
 
 const signUpForm=document.getElementById("signUpForm");
 
-  const email=signUpForm["emailwala"].value;
-  const password=signUpForm["passwordwala"].value;
+  
+
 
 const buttonSubmit=document.querySelector(".go-on");
 
 
+
+
+
 export async function userCreater(){
 
-try{
-  const email=signUpForm["emailwala"].value;
-  const password=signUpForm["passwordwala"].value;
+  try{
+    const email=signUpForm["emailwala"].value;
+    const password=signUpForm["passwordwala"].value;
+    
+    const userCredential=await createUserWithEmailAndPassword(auth,email,password);
+   
   
-  const userCredential=await createUserWithEmailAndPassword(auth,email,password);
- 
-
+    }
+  
+    
+  
+  catch(error){
+    console.log(error)
+  }}
+  if(signUpForm!==null){
+  signUpForm.addEventListener("submit",(e)=>{
+    e.preventDefault();
+    
+  })
+  
+  signUpForm.addEventListener("submit",userCreater)
   }
-
-  
-
-catch(error){
-  console.log(error)
-}}
-if(signUpForm!==null){
-signUpForm.addEventListener("submit",(e)=>{
-  e.preventDefault();
- signUpForm.reset();
-})
-
-signUpForm.addEventListener("submit",userCreater)
-}
-
 
 
  

@@ -302,8 +302,24 @@ nav{
     max-height:0px;
     transition: 0.3s;
     overflow:hidden
-
 }
+@media (max-width:992px){
+
+.sub-menu-wrap{
+    position:absolute;
+    top:120%;
+    left:1px;
+    width:250px;
+    max-width:350px;
+    z-index:1;
+    background:white;
+    border-radius:5px;
+    max-height:0px;
+    transition: 0.3s;
+    overflow:hidden
+}
+}
+
 #navigator{
     text-decoration:none;
 }
@@ -319,7 +335,7 @@ nav{
     background:white;
     padding:20px;
     margin:10px;
-    
+    z-index:1;
     
     
 }

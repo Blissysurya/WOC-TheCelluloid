@@ -110,6 +110,7 @@ document.getElementById("search_here").addEventListener("click",function search_
 			smallDiv.innerHTML=`
 			<h6>${dataunit.original_name}</h6>
 			`
+			smallAnch.href=`cards.html?title=${dataunit.original_title || dataunit.original_name}&image=https://image.tmdb.org/t/p/original/${dataunit.poster_path}&para=${dataunit.overview}`
 			
 	
 			smallImage.classList.add("small-image");

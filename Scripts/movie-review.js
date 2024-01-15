@@ -14,13 +14,13 @@ import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyCM_YnOmfpUeMuxqhEROOVHmL57VKxl1HQ",
-  authDomain: "mockproject-e167e.firebaseapp.com",
-  projectId: "mockproject-e167e",
-  storageBucket: "mockproject-e167e.appspot.com",
-  messagingSenderId: "1048857444347",
-  appId: "1:1048857444347:web:804627484e45401dc3955e",
-  measurementId: "G-2G1Y735GPS"
+  apiKey: "AIzaSyA2k5Q1J2YZbwmBS23W-fxm22So6liJWuU",
+  authDomain: "woc-celluloid.firebaseapp.com",
+  projectId: "woc-celluloid",
+  storageBucket: "woc-celluloid.appspot.com",
+  messagingSenderId: "136134324008",
+  appId: "1:136134324008:web:9a07641e21d3fd2873aa1d",
+  measurementId: "G-Q89JHE8GRE"
 };
 
 // Initialize Firebase
