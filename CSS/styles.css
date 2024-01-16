@@ -98,7 +98,8 @@ font-weight:bold;
 @media (min-width:768px){#cards-container > *{
    overflow:hidden;
    height:600px;
-   width:400px
+   width:400px;
+   max-width:400px
 }}
 
 .card-image{
@@ -106,55 +107,7 @@ font-weight:bold;
     max-height:500px;
 }
 
-/* style.css */
 
-
-    
-   /* body {
-    min-height: 50vh;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-    background: hsl(137, 46%, 24%);
-    font-family: "Poppins", sans-serif;
-    }*/
-    
-    .star-card {
-    max-width: 20rem;
-    background: #fff;
-    margin: 0 1rem;
-    padding: 1rem;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    width: 100%;
-    border-radius: 0.5rem;
-    
-    }
-    
-    .star {
-    font-size: 5vh;
-    cursor: pointer;
-    }
-    
-    .one {
-    color: rgb(255, 0, 0);
-    }
-    
-    .two {
-    color: rgb(255, 106, 0);
-    }
-    
-    .three {
-    color: rgb(251, 255, 120);
-    }
-    
-    .four {
-    color: rgb(255, 255, 0);
-    }
-    
-    .five {
-    color: rgb(24, 159, 14);
-    }
     .tv-cards{
         display:grid;
         grid-auto-flow: column;
@@ -166,6 +119,7 @@ font-weight:bold;
     overflow:hidden;
      height:600px;
     width:400px;
+   
 }
 }
 
@@ -214,12 +168,17 @@ font-weight:bold;
         grid-auto-flow: column;
         overflow-x:scroll;
         gap:10px;
+        
 }
 @media (min-width:768px){
     .movie-cards > *{
     overflow:hidden;
     height:600px;
-   width:400px;
+   width:400px;;
+   
+}
+.title-break{
+   word-wrap:break-word
 }
 }   
 .card-image3{
@@ -425,4 +384,10 @@ nav{
 .upcoming-card-image{
     border-radius:10px
 }
-
+.emailsignin{
+    margin:10px
+}
+.pass{
+    margin:10px;
+    margin-left:0px
+}

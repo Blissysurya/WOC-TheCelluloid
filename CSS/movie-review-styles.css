@@ -3,22 +3,48 @@
     margin-left:25%;
     margin-top:30px
 }
-#nav2{
+
+@media (min-width:768px){  #nav2{
     background:#F4EAE0;
     margin:20px;
     padding:20px;
-    border-radius:5px
+    border-radius:5px;   
 }
+}
+@media (max-width:768px){
+    #nav2{
+        background:#F4EAE0;
+        margin:20px;
+        padding:20px;
+        border-radius:5px;
+        height:100px   }
+}
+@media (max-width:768px ){
+    #nav2 img{
+        height:200px;
+        width:20%;
+        margin-left:40%;
+    }}
+@media(min-width:768px){
 #nav2 img{
     height:30vh;
     width:20%;
-    margin-left:40%
-}
+    margin-left:40%;
+}}
+
 #search-bar2{
     background:#F4DFC8;
     border-radius:10px;
-   position:relative
+   position:relative;  
 }
+@media (max-width:768px){
+    #search-bar2{
+    background:#F4DFC8;
+    border-radius:10px;
+   position:relative;
+   width:100%;
+   height:100%
+}}
 #search-bar2 input{
     margin-top:10px
 }

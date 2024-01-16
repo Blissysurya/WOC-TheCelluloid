@@ -20,7 +20,7 @@ function renderCards(data){
 		
         
         myImage.classList="card-image";
-		
+		myTitle.classList="title-break";
         
 
         myImage.src="https://image.tmdb.org/t/p/original/"+dataunit.poster_path;
@@ -43,6 +43,7 @@ function renderTVShows(data){
 		const myTitle2=document.createElement("h3");
 
 		myImage2.classList="card-image2";
+		myTitle2.classList="title-break";
 
 		myImage2.src="https://image.tmdb.org/t/p/original/"+dataunit.poster_path;
 		myTitle2.innerText=dataunit.original_name || dataunit.original_title;
@@ -71,6 +72,7 @@ function renderTopRatedMovies(data){
 		const myTitle3=document.createElement("h3");
 		
 		myImage3.classList="card-image3";
+		myTitle3.classList="title-break";
 
 		myImage3.src="https://image.tmdb.org/t/p/original/"+dataunit.poster_path;
 		myTitle3.innerText=dataunit.original_title || dataunit.original_name;
@@ -198,6 +200,8 @@ function upcomingMovies(data){
 		const myDiv4=document.createElement("div");
 		const myTitle=document.createElement("h3");
 		const myImg=document.createElement("img");
+
+		myTitle.classList="title-break";
 
 		myImg.src="https://image.tmdb.org/t/p/original/"+dataunit.poster_path;
 		myTitle.innerText=dataunit.original_title || dataunit.original_name;
