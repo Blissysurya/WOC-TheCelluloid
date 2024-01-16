@@ -3,6 +3,16 @@
     margin-left:25%;
     margin-top:30px
 }
+body{
+    background:url("../Images/list-background.jpg")
+}
+#watch-heading, #list-label{
+    color:#FFC300
+}
+h6{color:#FFC300}
+#movie-list-items{
+    color:#FFC300
+}
 #nav{
     background:#F4EAE0;
     margin:20px;

@@ -1,3 +1,9 @@
+body{
+    background:url("../Images/reaction-background.jpg")
+}
+#movie-rated-items li, #watch-heading2, #reaction-label{
+    color: #FFC300
+}
 #watch-search2{
     width:60%;
     margin-left:25%;

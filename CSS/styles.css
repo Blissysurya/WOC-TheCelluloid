@@ -1,6 +1,6 @@
-/*body{
-    background-image:url()
-}*/
+body{
+    background-image:url("../Images/index-background.jpg")
+}
 #genre-list{text-align:center;
 font-weight:bold;
 }
@@ -17,9 +17,13 @@ font-weight:bold;
     width:50%;
     margin-left:25%;
     border-radius:10px;
-    margin-top:10px
+    margin-top:10px;
+    
     
 };
+.carousel-item img{
+    margin:2.5px solid  #FFC300
+}
 @media  (max-width:768px){
     .carousel-item img{
         height:300px
@@ -99,12 +103,14 @@ font-weight:bold;
    overflow:hidden;
    height:600px;
    width:400px;
-   max-width:400px
+   max-width:400px;
+   
 }}
 
 .card-image{
     max-width:100%;
     max-height:500px;
+    border: solid #FFC300 2.5px;
 }
 
 
@@ -156,18 +162,21 @@ font-weight:bold;
 .upcoming-card-image{
     max-width:100%;
     max-height:500px;  
+    border: solid #FFC300 2.5px;
 }
 
 
  .card-image2{
     max-width:100%;
     max-height:500px;
+    border: solid #FFC300 2.5px;
     }
 .movie-cards{
     display:grid;
         grid-auto-flow: column;
         overflow-x:scroll;
         gap:10px;
+      
         
 }
 @media (min-width:768px){
@@ -178,12 +187,17 @@ font-weight:bold;
    
 }
 .title-break{
-   word-wrap:break-word
+   word-wrap:break-word;
+   color:#FFC300
 }
 }   
+.index-headings{
+    color:#FFC300
+}
 .card-image3{
     max-width:100%;
     max-height:500px;
+    border: solid #FFC300 2.5px;
 }
 li{
     text-align:center;
