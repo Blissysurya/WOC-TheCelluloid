@@ -391,3 +391,15 @@ nav{
     margin:10px;
     margin-left:0px
 }
+.movie-cards::-webkit-scrollbar{
+    overflow:hidden
+}
+.tv-cards::-webkit-scrollbar{
+    overflow:hidden
+}
+#cards-container::-webkit-scrollbar{
+    overflow:hidden
+}
+#upcoming-container::-webkit-scrollbar{
+    overflow:hidden
+}
