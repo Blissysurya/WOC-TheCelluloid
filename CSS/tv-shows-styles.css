@@ -1,3 +1,6 @@
+body{
+    background:url("../Images/tv-background.jpg")
+}
 #carouselExampleIndicators{
     width:50%;
     margin-left:25%;

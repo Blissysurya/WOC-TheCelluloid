@@ -1,3 +1,6 @@
+body{
+    background:url("../Images/movie-background2.jpg")
+}
 #carouselExampleIndicators{
     width:50%;
     margin-left:25%;

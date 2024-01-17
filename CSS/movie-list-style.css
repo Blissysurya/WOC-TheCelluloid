@@ -4,21 +4,39 @@
     margin-top:30px
 }
 body{
-    background:url("../Images/list-background.jpg")
+    background:url("../Images/list-background3.jpg")
+}
+body[background="../Images/list-background2.jpg"]{
+    overflow:hidden;
+    object-fit:cover
 }
 #watch-heading, #list-label{
+    
     color:#FFC300
+}
+#list-label{
+    font-size:20px
 }
 h6{color:#FFC300}
 #movie-list-items{
-    color:#FFC300
+    color:#FFC300;
+    
+}
+#movie-list-items  *{
+font-size:15px;
+
 }
 #nav{
-    background:#F4EAE0;
+    /*background:url("../Images/bar-background.jpg");*/
+    
     margin:20px;
     padding:20px;
-    border-radius:5px
+    border-radius:5px;
 }
+/*#nav[background="../Images/bar-background.jpg"] {
+    overflow:hidden;
+    object-fit:cover
+}*/
 #nav img{
     height:30vh;
     width:20%;
@@ -109,6 +127,8 @@ h6{color:#FFC300}
 #firebaseSavior{
     color:#000000;
     margin-left:20px;
-    font-size:20px;
-    font-weight:600
+    font-size:30px;
+    font-weight:600;
+    color:#FFC300;
+    text-decoration:none
 }
