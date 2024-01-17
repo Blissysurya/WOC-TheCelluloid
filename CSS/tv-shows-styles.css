@@ -87,3 +87,13 @@ img{
     background:rgb(184,184,184,0.9);
     border-radius:20px
 }
+.tv-genres-list > *::-webkit-scrollbar{
+    visibility:hidden;
+}
+
+.api-tv img{
+    border:2.5px solid #FFC300; 
+}
+.api-tv h3{
+    color:#FFC300;
+}

@@ -221,9 +221,9 @@ const showMovies= function(movieList){
     movieList.forEach(movie=>{
         const listItem=document.createElement("li");
 
-        listItem.innerHTML=`<h6>${movie.name}</h6>
+        listItem.innerHTML=`<h6 class="fs-sm-2 fs-md-2 fs-3" >${movie.name}</h6>
         <br/>
-        <h6>${movie.rating}</h6>`
+        <h6 class="fs-sm-2 fs-md-2 fs-3"> ${movie.rating}</h6>`
         listBox.append(listItem);
     }
 

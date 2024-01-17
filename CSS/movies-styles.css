@@ -110,3 +110,16 @@ img{
     background:rgb(184,184,184,0.9);
     border-radius:20px
 }
+.api-movies img{
+    border:2.5px solid #FFC300;
+    border-radius:5px
+} 
+.api-movies h3{
+    color:#FFC300
+}
+.sorted-movies > *::-webkit-scrollbar{
+    visibility:hidden
+}
+#list-label{
+    font-weight:bold;
+}
