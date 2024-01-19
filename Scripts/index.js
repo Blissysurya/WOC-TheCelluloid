@@ -22,7 +22,8 @@ function renderCards(data){
         myImage.classList="card-image";
 		myTitle.classList="title-break";
         
-
+		myTitle.style.color="#ffc300"
+		
         myImage.src="https://image.tmdb.org/t/p/original/"+dataunit.poster_path;
         myTitle.innerText=dataunit.original_title || dataunit.original_name;
 		
@@ -45,6 +46,7 @@ function renderTVShows(data){
 		myImage2.classList="card-image2";
 		myTitle2.classList="title-break";
 
+		myTitle2.style.color="#ffc300"
 		myImage2.src="https://image.tmdb.org/t/p/original/"+dataunit.poster_path;
 		myTitle2.innerText=dataunit.original_name || dataunit.original_title;
 
@@ -74,6 +76,7 @@ function renderTopRatedMovies(data){
 		myImage3.classList="card-image3";
 		myTitle3.classList="title-break";
 
+		myTitle3.style.color="#ffc300"
 		myImage3.src="https://image.tmdb.org/t/p/original/"+dataunit.poster_path;
 		myTitle3.innerText=dataunit.original_title || dataunit.original_name;
 		
@@ -202,7 +205,7 @@ function upcomingMovies(data){
 		const myImg=document.createElement("img");
 
 		myTitle.classList="title-break";
-
+		myTitle.style.color="#ffc300"
 		myImg.src="https://image.tmdb.org/t/p/original/"+dataunit.poster_path;
 		myTitle.innerText=dataunit.original_title || dataunit.original_name;
 		myImg.classList.add("upcoming-card-image");
@@ -215,7 +218,6 @@ function upcomingMovies(data){
 
 	})
 }
-
 
 
 

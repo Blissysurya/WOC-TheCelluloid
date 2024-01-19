@@ -187,9 +187,12 @@ font-weight:bold;
    
 }
 .title-break{
-   word-wrap:break-word;
    color:#FFC300;
 }
+.title-break{
+    color:#ffc300;
+}
+
 }   
 .index-headings{
     color:#FFC300
