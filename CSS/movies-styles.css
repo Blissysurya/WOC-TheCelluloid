@@ -49,6 +49,9 @@ li{
         overflow-x:scroll;
         gap:7px
 }
+.genre-item:hover{
+    cursor:pointer;
+}
 .beautify > *{
     overflow:hidden;
     height:600px;

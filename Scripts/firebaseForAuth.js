@@ -33,7 +33,7 @@ const buttonSubmit=document.querySelector(".go-on");
 
 
 
-export async function userCreater(){
+ async function userCreater(){
 
   try{
     const email=signUpForm["emailwala"].value;

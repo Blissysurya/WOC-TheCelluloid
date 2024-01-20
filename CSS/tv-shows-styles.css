@@ -97,3 +97,6 @@ img{
 .api-tv h3{
     color:#FFC300;
 }
+.genre-item:hover{
+    cursor:pointer
+}
