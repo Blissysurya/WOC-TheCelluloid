@@ -17,6 +17,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const parag=document.createElement("p");
     parag.textContent=paragraph;
 
+    titleElement.style.color="#ffc300";
+   parag.style.color="#ffc300"
+
     const imgElement = document.createElement('img');
     imgElement.src = image;
 
