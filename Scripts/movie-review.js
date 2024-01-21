@@ -232,3 +232,4 @@ const showMovies= function(movieList){
 
 })
 
+document.getElementById("colFormLabel").addEventListener("keypress",(e)=>{e.preventDefault()})

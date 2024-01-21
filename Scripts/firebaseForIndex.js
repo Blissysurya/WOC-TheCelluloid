@@ -3,7 +3,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebas
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
 import { getAuth, signOut, signInWithEmailAndPassword, onAuthStateChanged,  } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import {  getFirestore } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-import {getDoc} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import {getDoc, doc, query, collection} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 const firebaseConfig = {
     apiKey: "AIzaSyA2k5Q1J2YZbwmBS23W-fxm22So6liJWuU",
     authDomain: "woc-celluloid.firebaseapp.com",
@@ -45,10 +45,10 @@ signOutElement.addEventListener("click",()=>{
         const modal=document.getElementById("staticBackdrop");
         signInForm.reset();
         const userId=cred.user;
-        getDoc(doc(db,"users",userId.uid))
-        .then(doc=>{
-            if(doc.exists()){
-                console.log(doc)
+        getDoc(doc(db,'users',userId.uid))
+        .then((document)=>{
+            if(document.exists()){
+                console.log(document)
             }
             else{
                 console.log("Error no doc exists for users collection")

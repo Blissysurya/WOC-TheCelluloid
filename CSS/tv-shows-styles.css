@@ -100,3 +100,6 @@ img{
 .genre-item:hover{
     cursor:pointer
 }
+.navbar {
+    background-color:black !important
+}

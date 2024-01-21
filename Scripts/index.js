@@ -112,7 +112,7 @@ fetch("https://api.themoviedb.org/3/search/movie?"+"query="+imp+"&api_key=5013eb
 })})
 
  const myBoxDiv=document.querySelector(".search_box");
-
+document.getElementById("type_something").addEventListener("keypress",(e)=>{e.preventDefault()})
  function searchAnswer(data){
 	/*myReqDiv.innerHTML="";*/
 	myBoxDiv.innerHTML="";

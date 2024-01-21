@@ -380,7 +380,6 @@ nav{
     margin-left:10px;
 
 }
-
 #navigator{
     color:#000000;
     text-align:center;
@@ -419,4 +418,42 @@ nav{
 }
 #upcoming-container::-webkit-scrollbar{
     overflow:hidden
+}
+#upcoming-container > div:hover{
+transform:scale(1.1);
+z-index:2;
+}
+#upcoming-container > div{
+    transition:1s;
+    margin:30px
+}
+.index-headings{
+   margin-left:10px
+}
+#cards-container > div:hover{
+    transform:scale(1.1);
+    z-index:2;
+    }
+#cards-container > div{
+        transition:1s;
+        margin:30px
+}
+.tv-cards > div:hover{
+    transform:scale(1.1);
+    z-index:2;
+    }
+.tv-cards > div{
+        transition:1s;
+        margin:30px
+}
+.movie-cards > div:hover{
+    transform:scale(1.1);
+    z-index:2;
+    }
+.movie-cards > div{
+        transition:1s;
+        margin:30px
+}
+.navbar{
+    background-color:black !important
 }
