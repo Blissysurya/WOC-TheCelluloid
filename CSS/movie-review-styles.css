@@ -10,7 +10,7 @@ body{
     margin-top:30px
 }
 
-@media (min-width:768px){  #nav2{
+/* @media (min-width:768px){  #nav2{
     
     margin:20px;
     padding:20px;
@@ -24,8 +24,8 @@ body{
         padding:20px;
         border-radius:5px;
         height:100px   }
-}
-@media (max-width:768px ){
+} */
+/* @media (max-width:768px ){
     #nav2 img{
         height:200px;
         width:20%;
@@ -36,7 +36,7 @@ body{
     height:30vh;
     width:20%;
     margin-left:40%;
-}}
+}} */
 
 /*search-bar2{
     background:#F4DFC8;
@@ -163,4 +163,14 @@ body{
 #reaction-label{
    font-weight:bold
 }
-
+#wrapper{
+    margin-left:auto;
+    margin-right:auto;
+    width:960px
+}
+#nav2 img{
+    height:200px;
+    width:20%;
+    margin-left:40%;
+    margin-top:20px
+}
