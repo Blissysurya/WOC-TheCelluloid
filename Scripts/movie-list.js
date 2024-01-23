@@ -255,4 +255,3 @@ onAuthStateChanged(auth,(user)=>{
   } 
   
   })
-  document.getElementById("colFormLabel").addEventListener("keypress",(e)=>{e.preventDefault()})

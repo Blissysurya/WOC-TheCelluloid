@@ -141,4 +141,3 @@ document.getElementById("search_here").addEventListener("click",function search_
 			document.querySelector(".search_box").style.visibility="hidden"
 		}
 	})
-	document.getElementById("type_something").addEventListener("keypress",(e)=>{e.preventDefault()})

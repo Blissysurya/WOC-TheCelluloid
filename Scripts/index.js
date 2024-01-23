@@ -101,7 +101,7 @@ fetch("https://api.themoviedb.org/3/movie/top_rated?api_key=5013eb84105d14670f2a
 
 document.getElementById("search_here").addEventListener("click",function search_results(){
 	
-let imp=document.querySelector("#type_something").value;
+let imp=document.querySelector("#type-me").value;
 fetch("https://api.themoviedb.org/3/search/movie?"+"query="+imp+"&api_key=5013eb84105d14670f2ab2198877f9a3")
 .then(function(input){
 	return input.json();
@@ -112,7 +112,7 @@ fetch("https://api.themoviedb.org/3/search/movie?"+"query="+imp+"&api_key=5013eb
 })})
 
  const myBoxDiv=document.querySelector(".search_box");
-document.getElementById("type_something").addEventListener("keypress",(e)=>{e.preventDefault()})
+document.getElementById("type-me").addEventListener("keyup",(e)=>{e.preventDefault()})
  function searchAnswer(data){
 	/*myReqDiv.innerHTML="";*/
 	myBoxDiv.innerHTML="";
@@ -164,13 +164,13 @@ document.getElementById("type_something").addEventListener("keypress",(e)=>{e.pr
 	)*/
 }
 function hideSearch(){
-	if(document.querySelector("#type_something").value==0){
+	if(document.querySelector("#type-me").value==0){
 		document.querySelector(".search_box").style.visibility="hidden";
 	}
 }
 hideSearch();
 document.querySelector("#search_here").addEventListener("click",function(){
-	if(document.querySelector("#type_something").value!=0){
+	if(document.querySelector("#type-me").value!=0){
 		document.querySelector(".search_box").style.visibility="visible";
 	}
 	else{

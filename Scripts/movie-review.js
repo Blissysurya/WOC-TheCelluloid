@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
-import {getFirestore,collection, getDocs,onSnapshot, addDoc, doc, setDoc, query} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import {getFirestore,collection, getDocs,onSnapshot, addDoc, doc, setDoc, query, deleteDoc, updateDoc, where} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
 
@@ -30,7 +30,7 @@ const db=getFirestore();
 const auth=getAuth();
 
 
-const searchBar=document.getElementById("colFormLabel");
+const searchBar=document.getElementById("colForm");
 searchBar.addEventListener("keyup", function search_results(){
     const searchValue=searchBar.value;
     fetch("https://api.themoviedb.org/3/search/movie?"+"query="+searchValue+"&api_key=5013eb84105d14670f2ab2198877f9a3" || "https://api.themoviedb.org/3/search/tv?"+"query="+searchValue+"&api_key=5013eb84105d14670f2ab2198877f9a3" )
@@ -44,93 +44,84 @@ searchBar.addEventListener("keyup", function search_results(){
         console.log(error);
     })
 })
+const storage = new Object();
+storage.name="myLocker";
+
+
+
 
  const myBoxDiv=document.querySelector(".search_box2");
 const myListDiv=document.getElementById("list2");
- function searchAnswer(data){
-    
-   /*myReqDiv.innerHTML="";*/
-   myBoxDiv.innerHTML="";
-   data.forEach(dataunit=>{
-       
-       const smallAnch=document.createElement("a");
-       const smallImage=document.createElement("img");
-       const smallDiv=document.createElement("div");
-       smallDiv.innerHTML=`
+function searchAnswer(data) {
+  // myReqDiv.innerHTML="";
+  myBoxDiv.innerHTML = "";
+
+  data.forEach((dataunit) => {
+    const smallAnch = document.createElement("a");
+    const smallImage = document.createElement("img");
+    const smallDiv = document.createElement("div");
+
+    smallDiv.innerHTML = `
        <h6>${dataunit.original_title}</h6>
-       `;
-       smallImage.classList.add("small-image");
-       smallAnch.classList.add("clickable");
-       
-       smallImage.src="https://image.tmdb.org/t/p/original/"+dataunit.poster_path;
-       smallAnch.addEventListener("click",function(){
-         /*  const myDiv2=document.createElement("div");
-		   const myImage2=document.createElement("img");
-		    const myTitle2=document.createElement("h3");
-            
+    `;
 
-		    myImage2.classList="card-image2";
-            myDiv2.classList="list-element";
-		    myImage2.src="https://image.tmdb.org/t/p/original/"+dataunit.poster_path;
-		    myTitle2.innerText=dataunit.original_name || dataunit.original_title;
+    smallImage.classList.add("small-image");
+    smallAnch.classList.add("clickable");
 
-            myDiv2.addEventListener("click",myModal.show())
+    smallImage.src =
+      "https://image.tmdb.org/t/p/original/" + dataunit.poster_path;
 
-		   myDiv2.appendChild(myImage2);
-		    myDiv2.appendChild(myTitle2);
-            
-		    myListDiv.appendChild(myDiv2);*/
+    smallAnch.addEventListener("click", function () {
+      myModal.show();
 
-            myModal.show();
+      const myStars = document.querySelectorAll(".star");
+      movieRatedList = [];
 
-      const myStars=document.querySelectorAll(".star");
-      movieRatedList=[];
-      myStars.forEach(star=>{
-      star.addEventListener("click",()=>{  
-        onAuthStateChanged(auth,(user)=>{
-          console.log(user.uid)
-        
-      const addPostToUser = async (Id) => {
-      try {
-        // Reference to the 'users' collection
-        const usersCollection = collection(db, 'users');
+      myStars.forEach((star) => {
+        star.addEventListener("click", () => {
+          onAuthStateChanged(auth, (user) => {
+            console.log(user.uid);
 
-        // Reference to the specific user's document
-        const userDocRef = doc(usersCollection,user.uid );
+            const addPostToUser = async (Id) => {
+              try {
+                // Reference to the 'users' collection
+                const usersCollection = collection(db, "users");
 
+                // Reference to the specific user's document
+                const userDocRef = doc(usersCollection, user.uid);
 
-        // Reference to the nested 'posts' collection
-        const postsCollection = collection(userDocRef, 'Rated');
+                // Reference to the nested 'posts' collection
+                const postsCollection = collection(userDocRef, "Rated");
 
-        // Add a document to the 'posts' collection
-        const newPostDocRef = await addDoc(postsCollection, {
-          name: dataunit.original_title || dataunit.original_name,
-          rating: star.dataset.value
+                // Add a document to the 'posts' collection
+                const newPostDocRef = await addDoc(postsCollection, {
+                  name: dataunit.original_title || dataunit.original_name,
+                  rating: star.dataset.value,
+                })
+                
+
+                await updateDoc(doc(postsCollection, newPostDocRef.id), {
+                  ID: newPostDocRef.id,
+                })
+
+                
+              } catch (error) {
+                console.error("Error adding post: ", error);
+              }
+              movieRatedList = [];
+            };
+            addPostToUser(user.uid);
+          });
         });
+      });
+    });
 
-        console.log('Post added with ID: ', newPostDocRef.id);
-      } catch (error) {
-        console.error('Error adding post: ', error);
-      }
-    }
-    addPostToUser(user.uid);
-  })
-})
-  
-  })   
+    smallAnch.appendChild(smallDiv);
+    smallAnch.appendChild(smallImage);
+    myBoxDiv.appendChild(smallAnch);
+  });
+}
 
-
-
-       })
-        
-       smallAnch.appendChild(smallDiv);
-       smallAnch.appendChild(smallImage);
-       myBoxDiv.appendChild(smallAnch);
-
-
-
-
-        })}
 
 
 
@@ -141,14 +132,14 @@ const myListDiv=document.getElementById("list2");
 
 
  function hideSearch(){
-           if (document.querySelector("#colFormLabel").value == 0) {
+           if (document.querySelector("#colForm").value == 0) {
                document.querySelector(".search_box2").style.visibility = "hidden";
            }
 
        }
 hideSearch();
-document.querySelector("#colFormLabel").addEventListener("keyup",function(){
-    if(document.querySelector("#colFormLabel").value!=0){
+document.querySelector("#colForm").addEventListener("keyup",function(){
+    if(document.querySelector("#colForm").value!=0){
         document.querySelector(".search_box2").style.visibility="visible";
     }
     else{
@@ -193,7 +184,48 @@ function resetStars() {
 const myModal = new bootstrap.Modal(document.getElementById('exampleModal'),{  keyboard: false});
 let movieRatedList=[];
 
+// onAuthStateChanged(auth,(user)=>{
+//   const MovieList =async()=>{
+//     try{
+//         //const docSnaps=await getDocs(collection(db,"ToWatchList"));
+//         await onSnapshot(query(collection(doc(collection(db,'users'),user.uid),'Rated')),docSnaps=>{
+            
+//             docSnaps.forEach(doc=>{
+//                 const docSnap= doc.data();
+                            
+//                  movieRatedList.push(docSnap)
+//             })
+//             console.log(movieRatedList);
+//             showMovies(movieRatedList); 
+//         })
+        
+//     }
+//     catch(error){
+//         console.log(error)
+//     }
+// }
+// MovieList();
+// const listBox=document.getElementById("movie-rated-items");
+
+//  function showMovies(movieList){
+//     listBox.innerHTML="";
+//     movieList.forEach(movie=>{
+//         const listItem=document.createElement("li");
+        
+//         listItem.innerHTML=`<h6 class="fs-sm-2 fs-md-2 fs-3" >${movie.name}</h6>
+//         <br/>
+//         <h6 class="fs-sm-2 fs-md-2 fs-3"> ${movie.rating}</h6><button id="${movie.ID}">Remove</button>`
+//         listBox.append(listItem)
+//     }
+
+//     )
+// }
+
+// })
+const listBox=document.getElementById("movie-rated-items");
+
 onAuthStateChanged(auth,(user)=>{
+  storage.Id=user.uid
   const MovieList =async()=>{
     try{
         //const docSnaps=await getDocs(collection(db,"ToWatchList"));
@@ -201,7 +233,7 @@ onAuthStateChanged(auth,(user)=>{
             
             docSnaps.forEach(doc=>{
                 const docSnap= doc.data();
-                            
+                  storage.data=docSnap      
                  movieRatedList.push(docSnap)
             })
             console.log(movieRatedList);
@@ -214,22 +246,71 @@ onAuthStateChanged(auth,(user)=>{
     }
 }
 MovieList();
-const showMovies= function(movieList){
-    
-    const listBox=document.getElementById("movie-rated-items");
+
+
+ function showMovies(movieList){
     listBox.innerHTML="";
     movieList.forEach(movie=>{
+      
         const listItem=document.createElement("li");
-
+        
         listItem.innerHTML=`<h6 class="fs-sm-2 fs-md-2 fs-3" >${movie.name}</h6>
         <br/>
         <h6 class="fs-sm-2 fs-md-2 fs-3"> ${movie.rating}</h6>`
         listBox.append(listItem);
-    }
+        const myButton=document.createElement("button");
+        myButton.innerText="Remove"
+        listBox.append(myButton);
+        
+        idGiver()
+          //const docSnaps=await getDocs(collection(db,"ToWatchList"));
+          async function idGiver (){
+            try{
+          await onSnapshot(query(collection(doc(collection(db,'users'),user.uid),'Rated')),docSnaps=>{
+              
+              docSnaps.forEach(doc=>{
+                  const docSnap= doc.data().ID;
+                  storage.movieId=docSnap;
+                   myButton.id=docSnap;
+                   myButton.addEventListener("click",
+                   async () => {
+                    try {
+                      // Use the stored movieId in the deleteDoc query
+                      await deleteDoc(doc(collection(doc(collection(db,'users'),user.uid),'Rated'),myButton.id));
+                      // Optional: Perform any additional actions after the document is deleted
+                      console.log('Document successfully deleted!');
+                    } catch (error) {
+                      console.error('Error deleting document:', error);
+                    }
+                  }
+
+                   
+                   )
+
+              })
+              
+          })}
+          catch(error){
+            console.log(error)
+          }
+          
+
+        }
+          
+      
+      
+      
+
+
+
+      }
+        
 
     )
-} 
+    }
 
-})
+    
+    movieRatedList=[] 
+  })
+console.log(storage)
 
-document.getElementById("colFormLabel").addEventListener("keypress",(e)=>{e.preventDefault()})
