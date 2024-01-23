@@ -107,6 +107,7 @@ function searchAnswer(data) {
                 
               } catch (error) {
                 console.error("Error adding post: ", error);
+                
               }
               movieRatedList = [];
             };
