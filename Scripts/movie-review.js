@@ -53,7 +53,7 @@ storage.name="myLocker";
  const myBoxDiv=document.querySelector(".search_box2");
 const myListDiv=document.getElementById("list2");
 function searchAnswer(data) {
-  // myReqDiv.innerHTML="";
+  
   myBoxDiv.innerHTML = "";
 
   data.forEach((dataunit) => {
@@ -187,44 +187,7 @@ function resetStars() {
 const myModal = new bootstrap.Modal(document.getElementById('exampleModal'),{  keyboard: false});
 let movieRatedList=[];
 
-// onAuthStateChanged(auth,(user)=>{
-//   const MovieList =async()=>{
-//     try{
-//         //const docSnaps=await getDocs(collection(db,"ToWatchList"));
-//         await onSnapshot(query(collection(doc(collection(db,'users'),user.uid),'Rated')),docSnaps=>{
-            
-//             docSnaps.forEach(doc=>{
-//                 const docSnap= doc.data();
-                            
-//                  movieRatedList.push(docSnap)
-//             })
-//             console.log(movieRatedList);
-//             showMovies(movieRatedList); 
-//         })
-        
-//     }
-//     catch(error){
-//         console.log(error)
-//     }
-// }
-// MovieList();
-// const listBox=document.getElementById("movie-rated-items");
 
-//  function showMovies(movieList){
-//     listBox.innerHTML="";
-//     movieList.forEach(movie=>{
-//         const listItem=document.createElement("li");
-        
-//         listItem.innerHTML=`<h6 class="fs-sm-2 fs-md-2 fs-3" >${movie.name}</h6>
-//         <br/>
-//         <h6 class="fs-sm-2 fs-md-2 fs-3"> ${movie.rating}</h6><button id="${movie.ID}">Remove</button>`
-//         listBox.append(listItem)
-//     }
-
-//     )
-// }
-
-// })
 const listBox=document.getElementById("movie-rated-items");
 
 onAuthStateChanged(auth,(user)=>{
@@ -269,60 +232,13 @@ MovieList();
         <br/>
         <h6 class="fs-sm-2 fs-md-2 fs-3"> ${movie.rating}</h6>`
         listBox.append(listItem);
-        // const myButton=document.createElement("button");
-        // myButton.innerText="Remove"
-        // listBox.append(myButton);
-        
-        // idGiver()
-        //   //const docSnaps=await getDocs(collection(db,"ToWatchList"));
-        //   async function idGiver (){
-        //     try{
-        //   await onSnapshot(query(collection(doc(collection(db,'users'),user.uid),'Rated')),docSnaps=>{
-              
-        //       docSnaps.forEach(doc=>{
-        //           const docSnap= doc.data().ID;
-        //           storage.movieId=docSnap;
-        //            myButton.id=docSnap;
-        //            myButton.addEventListener("click",
-        //            async () => {
-        //             try {
-        //               // Use the stored movieId in the deleteDoc query
-        //               await deleteDoc(doc(collection(doc(collection(db,'users'),user.uid),'Rated'),myButton.id));
-        //               // Optional: Perform any additional actions after the document is deleted
-        //               console.log('Document successfully deleted!');
-        //             } catch (error) {
-        //               console.error('Error deleting document:', error);
-        //             }
-        //           }
-
-                   
-        //            )
-
-        //       })
-              
-        //   })}
-        //   catch(error){
-        //     console.log(error)
-        //   }
-          
-
-        // }
-          
-      
-      
-      
-
-
-
       }
-        
-
     )
-
     }
 
    listBox.innerHTML=""
     
   })
 console.log(storage)
+
 
