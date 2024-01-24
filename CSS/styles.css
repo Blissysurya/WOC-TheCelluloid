@@ -38,9 +38,8 @@ font-weight:bold;
     .carousel-item img{
         height:90vh; 
     }
-   
-    
-} 
+}
+
 @media (max-width:768px){
     #cards-container > * img{
         width:150px;
