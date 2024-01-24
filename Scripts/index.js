@@ -131,7 +131,7 @@ document.getElementById("type-me").addEventListener("keyup",(e)=>{e.preventDefau
 		smallAnch.classList.add("clickable");
 		
 		smallImage.src="https://image.tmdb.org/t/p/original/"+dataunit.poster_path;
-		smallAnch.href=`cards.html?title=${dataunit.original_title || dataunit.original_name}&image=https://image.tmdb.org/t/p/original/${dataunit.poster_path}&para=${dataunit.overview}`
+		smallAnch.href=`cards.html?title=${dataunit.original_title || dataunit.original_name}&image=https://image.tmdb.org/t/p/original/${dataunit.poster_path}&para=${dataunit.overview}&pop=${dataunit.vote_average}`
 		
 		
 		smallAnch.appendChild(smallDiv);
@@ -174,7 +174,7 @@ document.querySelector("#search_here").addEventListener("click",function(){
 		document.querySelector(".search_box").style.visibility="visible";
 	}
 	else{
-		document.querySelector(".search_box").style.visibility="hidden"
+		document.querySelector(".search_box").style.visibility="hidden";
 	}
 })
 
