@@ -85,27 +85,28 @@ function searchAnswer(data) {
 
             const addPostToUser = async (Id) => {
               try {
-                // Reference to the 'users' collection
+              
                 const usersCollection = collection(db, "users");
 
-                // Reference to the specific user's document
+                
                 const userDocRef = doc(usersCollection, user.uid);
 
-                // Reference to the nested 'posts' collection
+                
                 const postsCollection = collection(userDocRef, "Rated");
 
-                // Add a document to the 'posts' collection
+                
                 const newPostDocRef = await addDoc(postsCollection, {
                   name: dataunit.original_title || dataunit.original_name,
                   rating: star.dataset.value,
                 })
-               movieRatedList=[]
+               
                 
                 
                 await updateDoc(doc(postsCollection, newPostDocRef.id), {
                   ID: newPostDocRef.id,
                 })
 
+                
                 
               } catch (error) {
                 console.error("Error adding post: ", error);
@@ -182,7 +183,6 @@ function resetStars() {
     for (let i = 0; i < rating; i++) {
       stars[i].classList.add('active');
     }
-    // You can use 'rating' value as needed, like sending it to the server for storage.
 }
 const myModal = new bootstrap.Modal(document.getElementById('exampleModal'),{  keyboard: false});
 let movieRatedList=[];
@@ -220,6 +220,7 @@ MovieList();
 
 
  function showMovies(movieList){
+  movieRatedList=[];
   const listBox=document.getElementById("movie-rated-items");
     listBox.innerHTML="";
    
@@ -236,7 +237,7 @@ MovieList();
     )
     }
 
-   listBox.innerHTML=""
+
     
   })
 console.log(storage)
