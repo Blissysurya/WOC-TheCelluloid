@@ -4,7 +4,7 @@
     margin-top:30px
 }
 body{
-    background:url("../Images/list-background3.jpg")
+    background:url("../Images/list_background.jpeg")
 }
 body[background="../Images/list-background2.jpg"]{
     overflow:hidden;
