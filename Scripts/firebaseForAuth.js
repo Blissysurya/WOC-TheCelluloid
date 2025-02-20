@@ -7,7 +7,7 @@ const firebaseConfig = {
   apiKey: "AIzaSyA2k5Q1J2YZbwmBS23W-fxm22So6liJWuU",
   authDomain: "woc-celluloid.firebaseapp.com",
   projectId: "woc-celluloid",
-  storageBucket: "woc-celluloid.appspot.com",
+  storageBucket: "woc-celluloid.firebasestorage.app",
   messagingSenderId: "136134324008",
   appId: "1:136134324008:web:9a07641e21d3fd2873aa1d",
   measurementId: "G-Q89JHE8GRE"
